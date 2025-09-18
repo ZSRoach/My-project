@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    //variable declaration
     int leftScore;
     int rightScore;
     public TextMeshProUGUI leftScoreText;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //variable assigning
         scoreSound = GetComponents<AudioSource>()[1];
         playing = true;
         leftScore = 0;
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
         ball = GameObject.FindGameObjectWithTag("Ball");
         timer = 301;
     }
-
+    //goal function to handle scoring and resetting
     public void goal(bool input) {
         if (input) {
             leftScore += 1;
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //delay between resets
         if (timer < 300) {
             timer += 1;
         }
@@ -63,6 +66,7 @@ public class GameManager : MonoBehaviour
             timer = 301;
         }
 
+        //handles new ball
         if (playing) {
             ballScript.direction = ballScript.launch(!rightScoredLast);
             ballScript.ballSpeed = ballScript.newSpeed();
@@ -70,14 +74,15 @@ public class GameManager : MonoBehaviour
             playing = false;
         }
 
+        //finishes the game
         if (leftScore > 4)
         {
-            timer = 101;
+            timer = 301;
             gameOverText.text = "Player 1 wins!";
         }
 
         if (rightScore > 4) {
-            timer = 101;
+            timer = 301;
             gameOverText.text = "Player 2 wins!";
         }
     }

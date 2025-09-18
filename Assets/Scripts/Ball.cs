@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // variable declaration
     public float ballSpeed;
     public Vector2 direction;
     AudioSource paddleHit;
@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
 
     void Start()
     {
+        //variable assignment
         transform.position = new Vector3(0f, 0f, 0f);
         ballSpeed = newSpeed();
         direction = launch(true);
@@ -17,6 +18,7 @@ public class Ball : MonoBehaviour
         borderHit = GetComponents<AudioSource>()[1];
     }
 
+    //acquires a new direction for the ball to go, keeping track of who scored last
     public Vector2 launch(bool right) {
         transform.position = new Vector3(0f, 0f, 0f);
         float angle = 0;
@@ -39,24 +41,25 @@ public class Ball : MonoBehaviour
                 angle = Random.Range(1.7f, 1.8f);
             }
         }
-
+        //vector calculation
         Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.PI), Mathf.Sin(angle * Mathf.PI));
         return direction;
     }
 
+    //acquires a random speed for the ball
     public float newSpeed() {
-        return 8*Random.Range(.6f, 1.2f);
+        return 8*Random.Range(1f, 1.4f);
     }
 
     // Update is called once per frame
     void Update()
     {
         GetComponent<Rigidbody2D>().linearVelocity = direction * ballSpeed;
-       
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        //handles ball collisions with various game objects
         if (collision.gameObject.CompareTag("Edge")) {
             direction.y = -direction.y;
             borderHit.Play();

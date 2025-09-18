@@ -7,6 +7,7 @@ public class LeftPaddle : MonoBehaviour
 
     void Start()
     {
+        //reset paddle position
         transform.position = new Vector3(-9f, 0f, 0f);
         
     }
@@ -14,6 +15,7 @@ public class LeftPaddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //paddle movement
         if ((Input.GetKey(KeyCode.W)))
         {
             if (transform.position.y < 3.5)
