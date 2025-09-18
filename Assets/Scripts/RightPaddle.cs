@@ -13,12 +13,12 @@ public class RightPaddle : MonoBehaviour
     {
         if ((Input.GetKey(KeyCode.UpArrow))) {
             if (transform.position.y < 3.5) {
-                transform.position = new Vector3(transform.position.x, transform.position.y + .02f, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y + .1f, transform.position.z);
             }
         }
         if ((Input.GetKey(KeyCode.DownArrow))) {
             if (transform.position.y > -3.5) {
-                transform.position = new Vector3(transform.position.x, transform.position.y - .02f, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y - .1f, transform.position.z);
             }
         }
     }

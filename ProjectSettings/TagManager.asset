@@ -9,6 +9,8 @@ TagManager:
   - Paddle2
   - RightGoal
   - LeftGoal
+  - GameManager
+  - Ball
   layers:
   - Default
   - TransparentFX
